@@ -23,20 +23,18 @@ document.onkeyup = function (e) {
     document.getElementById("losses-text").innerHTML = losses;
 
         document.getElementById("guesses-left-text").innerHTML=guessesLeft;
-        
+      
+        guessesLeft--;
         if (userGuess === compGuess) {
             wins++;
             guessesLeft = 9;
-            //update wins in html
+            lettersGuessed = [];
 
-            //reset user guesses, computer guess, guesses left
-        } else if (userGuess !== compGuess) {
-            guessesLeft--;
+        } else if (guessesLeft === 0) {
+           losses++;
+           guessesLeft = 9;
+           lettersGuessed = []; 
 
-            
-            //update guesses left in html
-        } else if (guessesLeft == 0) {
-            losses++;
         }
 }
 
