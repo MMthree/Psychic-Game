@@ -27,12 +27,12 @@ document.onkeyup = function (e) {
         guessesLeft--;
         if (userGuess === compGuess) {
             wins++;
-            guessesLeft = 9;
+            guessesLeft = 10;
             lettersGuessed = [];
 
         } else if (guessesLeft === 0) {
            losses++;
-           guessesLeft = 9;
+           guessesLeft = 10;
            lettersGuessed = []; 
 
         }
