@@ -6,30 +6,37 @@ var lettersGuessed = document.getElementById("letters-guessed-text");
 
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft = 9;
 var compLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "l", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var lettersGuessed = [];
 
-
-document.onkeyup = function(e) {
+document.onkeyup = function (e) {
 
     var userGuess = e.key;
     var compGuess = compLetter[Math.floor(Math.random() * compLetter.length)];
 
-    if ((userGuess === compGuess)) {
-        wins++;
-    } else if ((userGuess !== compGuess)) {
-        losses--;
-        guessesLeft--;
+    lettersGuessed.push(userGuess);
+    document.getElementById("letters-guessed-text").innerHTML = lettersGuessed;
 
-       
-    }
-        winsText.textContent = wins;
-    
+    document.getElementById("guesses-left-text").innerHTML = guessesLeft;
+    document.getElementById("wins-text").innerHTML = wins;
+    document.getElementById("losses-text").innerHTML = losses;
+
+        document.getElementById("guesses-left-text").innerHTML=guessesLeft;
+        
+        if (userGuess === compGuess) {
+            wins++;
+            guessesLeft = 9;
+            //update wins in html
+
+            //reset user guesses, computer guess, guesses left
+        } else if (userGuess !== compGuess) {
+            guessesLeft--;
+
+            
+            //update guesses left in html
+        } else if (guessesLeft == 0) {
+            losses++;
+        }
 }
-
-
-
-
-
-
 
